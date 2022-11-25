@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		body{
+			background-image: url(https://wallpaperaccess.com/full/1155011.jpg);
+			background-size: cover;
+		}
+		.div1{
+			border: 1px solid skyblue;
+			width: 15%;
+			background-color: skyblue;
+			padding: 3%;
+			margin: auto;
+			margin-top: 15%;
+		}
+		.submit{
+			padding: 2%;
+			margin-top: 4%;
+			margin-left: 22%;
+			width: 30%;
+	
+		}
+		.submit:hover{
+			background-color:pink;
+			color:blueviolet;
+		}
+		#name{
+			margin-bottom: 2%;
+		}
+		
+	</style>
+	<script type="text/javascript">
+		function submit(){
+			var name=document.getElementById("name").value
+			var password=document.getElementById("password").value
+			console.log(name)
+			console.log(password)
+			fetch("http://localhost:3000/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:name,password:password})
+		})
+			.then((res)=>{
+				console.log(res)
+				if(res.status===200)
+					alert("Regisration successful")
+			})
+			.catch((err)=>{
+				alert(err)
+			})
+
+		}
+		
+	</script>
+	<div class="div1">
+	<input id="name"placeholder="Enter your Name"/><br>
+	<input id="password"placeholder="password"/><br>
+	<button  class="submit"onclick="submit()">Submit</button>
+</div>
+</div>
+</body>
+</html>
