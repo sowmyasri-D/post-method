@@ -39,15 +39,22 @@
 		function submit(){
 			var name=document.getElementById("name").value
 			var password=document.getElementById("password").value
+			var car=document.getElementById("car").value
 			console.log(name)
 			console.log(password)
+			console.log(car)
+				var gmale=document.getElementById("male").checked
+				var gfemale=document.getElementById("female").checked
+			 if(gmale==true)var gender="male"
+				else var gender="female"
+				console.log(gender)
 			fetch("http://localhost:3000/newData",{
-			method:"POST",
-			headers:{
-				"Content-Type":"application/json"
-			},
-			body:JSON.stringify({name:name,password:password})
-		})
+				method:"POST",
+				headers:{
+					"Content-Type":"application/json"
+				},
+				body:JSON.stringify({name:name,password:password,car:car})
+			})
 			.then((res)=>{
 				console.log(res)
 				if(res.status===200)
@@ -56,15 +63,25 @@
 			.catch((err)=>{
 				alert(err)
 			})
-
-		}
-		
+	}	
 	</script>
 	<div class="div1">
 	<input id="name"placeholder="Enter your Name"/><br>
 	<input id="password"placeholder="password"/><br>
-	<button  class="submit"onclick="submit()">Submit</button>
+	<select id="car">
+	    <option>select a car</option>
+		<option>Audi</option>
+		<option>Nano</option>
+		<option>Ferrai</option>
+		<option>BMW</option>
+		<option>Honda</option>
+</select></br>
+<p>
+	<input type="radio" name="gender" id="male"/>Male
+	<input type="radio" name="gender" id="female"/>Female</br>
+</p>
+<button  class="submit"onclick="submit()">Submit</button>
 </div>
-</div>
+
 </body>
 </html>

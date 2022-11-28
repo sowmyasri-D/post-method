@@ -14,8 +14,8 @@ app.get("/",(req,res)=>{
 	res.send("pavankalyan")
 })
 app.post("/newData",(req,res)=>{
-	const{name,password}=req.body;
-	console.log(name,password)
+	const{name,password,car}=req.body;
+	console.log(name,password,car)
 	res.send("added")
 })
 app.listen(port,()=>console.log("server is running on port 3000"))
